@@ -4,3 +4,4 @@ shinylive
 numpy
 pandas
 plotly
+PyYaml
