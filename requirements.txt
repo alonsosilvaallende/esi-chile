@@ -5,3 +5,4 @@ numpy
 pandas
 plotly
 PyYaml
+nbformat
