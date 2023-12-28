@@ -117,7 +117,7 @@ PERCENTILES = {
 
 
 def server(input: Inputs, output: Outputs, session: Session) -> None:
-    ui.input_numeric("sueldo", "Ingrese su sueldo mensual", value=500000)
+    ui.input_numeric("sueldo", "Ingrese su sueldo mensual", value=600000)
     #@render.text
     #def txt():
     #    DF_CURVA = pd.Series(PERCENTILES)
@@ -151,7 +151,7 @@ def server(input: Inputs, output: Outputs, session: Session) -> None:
         fig.add_trace(go.Scatter(x=list(DF_CURVA.index), y=list(DF_CURVA.values), hovertemplate='Sueldo mensual: %{y:$,.0f}<extra></extra>'))
         fig.add_trace(go.Scatter(x=list(aux.index), y=list(aux.values), fill='tozeroy', hovertemplate='<extra></extra>'))
         fig.update_layout(
-            title = f'{percentile_sueldo} % de las personas ocupadas ganan menos que usted.',
+            title = f'{percentile_sueldo} % de las personas ocupadas gana menos que usted.',
             yaxis_title = 'Ingreso mensual',
             xaxis = dict(
                 tickmode = 'array',
