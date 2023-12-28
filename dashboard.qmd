@@ -4,11 +4,9 @@ author: "Alonso Silva"
 format: 
   dashboard:
     orientation: columns
-    nav-buttons:
-      - icon: twitter
-      - href: https://twitter.com/alonsosilva
-      - icon: github
-      - href: https://github.com/alonsosilvaallende
+    nav-buttons: 
+      - twitter
+      - github
 server: shiny
 ---
 
@@ -157,6 +155,7 @@ dict(
 
 ### Row  {height="70%"}
 ```{python}
+#| title: "Sueldos vs percentil"
 @render_widget()
 def nav():
     DF_CURVA = pd.Series(PERCENTILES)
