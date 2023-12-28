@@ -5,7 +5,6 @@ format:
   dashboard:
     orientation: columns
     nav-buttons: 
-      - twitter
       - github
 server: shiny
 ---
@@ -126,7 +125,7 @@ ui.input_numeric("sueldo", "Ingrese su sueldo mensual", value=500000)
 #def txt():
 #    DF_CURVA = pd.Series(PERCENTILES)
 #    percentile_sueldo = int(100*DF_CURVA[DF_CURVA>=input.sueldo()].index[0]) if input.sueldo()<=DF_CURVA.iloc[-1] else 99
-#    return f"{percentile_sueldo}% de las personas ocupadas ganan menos que usted."
+#    return f"{percentile_sueldo}% de las personas ocupadas gana menos que usted."
 ```
 
 ## Column {width="80%"}
@@ -155,7 +154,7 @@ dict(
 
 ### Row  {height="70%"}
 ```{python}
-#| title: "Sueldos vs percentil"
+#| title: "Ingreso mensual vs percentil"
 @render_widget()
 def nav():
     DF_CURVA = pd.Series(PERCENTILES)
@@ -166,7 +165,7 @@ def nav():
     fig.add_trace(go.Scatter(x=list(aux.index), y=list(aux.values), fill='tozeroy', hovertemplate='<extra></extra>'))
     fig.update_layout(
     	title = f'{percentile_sueldo} % de las personas ocupadas ganan menos que usted.',
-    	yaxis_title = 'Sueldos mensuales',
+    	yaxis_title = 'Ingreso mensual',
     	xaxis = dict(
     		tickmode = 'array',
     		tickvals = [.1*i for i in range(11)],

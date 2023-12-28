@@ -122,7 +122,7 @@ def server(input: Inputs, output: Outputs, session: Session) -> None:
     #def txt():
     #    DF_CURVA = pd.Series(PERCENTILES)
     #    percentile_sueldo = int(100*DF_CURVA[DF_CURVA>=input.sueldo()].index[0]) if input.sueldo()<=DF_CURVA.iloc[-1] else 99
-    #    return f"{percentile_sueldo}% de las personas ocupadas ganan menos que usted."
+    #    return f"{percentile_sueldo}% de las personas ocupadas gana menos que usted."
 
     # ========================================================================
 
@@ -152,7 +152,7 @@ def server(input: Inputs, output: Outputs, session: Session) -> None:
         fig.add_trace(go.Scatter(x=list(aux.index), y=list(aux.values), fill='tozeroy', hovertemplate='<extra></extra>'))
         fig.update_layout(
             title = f'{percentile_sueldo} % de las personas ocupadas ganan menos que usted.',
-            yaxis_title = 'Sueldos mensuales',
+            yaxis_title = 'Ingreso mensual',
             xaxis = dict(
                 tickmode = 'array',
                 tickvals = [.1*i for i in range(11)],
