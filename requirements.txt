@@ -7,3 +7,4 @@ plotly==5.18.0
 PyYaml==6.0.1
 nbformat==5.9.2
 nbclient==0.8.0
+git+https://github.com/quarto-dev/quarto-cli
