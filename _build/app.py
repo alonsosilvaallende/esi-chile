@@ -117,15 +117,6 @@ PERCENTILES = {
 
 
 def server(input: Inputs, output: Outputs, session: Session) -> None:
-    ui.input_numeric("sueldo", "Ingrese su sueldo mensual", value=600000)
-    #@render.text
-    #def txt():
-    #    DF_CURVA = pd.Series(PERCENTILES)
-    #    percentile_sueldo = int(100*DF_CURVA[DF_CURVA>=input.sueldo()].index[0]) if input.sueldo()<=DF_CURVA.iloc[-1] else 99
-    #    return f"{percentile_sueldo}% de las personas ocupadas gana menos que usted."
-
-    # ========================================================================
-
     dict(
       icon = "graph-up",
       color = "blue",
@@ -142,11 +133,16 @@ def server(input: Inputs, output: Outputs, session: Session) -> None:
 
     # ========================================================================
 
+    ui.input_numeric("sueldo", "Ingrese su sueldo mensual", value=600000)
+
+    # ========================================================================
+
     @render_widget()
     def nav():
+        sueldo = input.sueldo() if input.sueldo() is not None else 0
         DF_CURVA = pd.Series(PERCENTILES)
-        aux = DF_CURVA[DF_CURVA<input.sueldo()]
-        percentile_sueldo = int(100*DF_CURVA[DF_CURVA>=input.sueldo()].index[0]) if input.sueldo()<=DF_CURVA.iloc[-1] else 99
+        aux = DF_CURVA[DF_CURVA<sueldo]
+        percentile_sueldo = int(100*DF_CURVA[DF_CURVA>=sueldo].index[0]) if sueldo<=DF_CURVA.iloc[-1] else 99
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=list(DF_CURVA.index), y=list(DF_CURVA.values), hovertemplate='Sueldo mensual: %{y:$,.0f}<extra></extra>'))
         fig.add_trace(go.Scatter(x=list(aux.index), y=list(aux.values), fill='tozeroy', hovertemplate='<extra></extra>'))
