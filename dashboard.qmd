@@ -13,10 +13,12 @@ server: shiny
 #| context: setup
 import numpy as np
 import pandas as pd
+from pathlib import Path
 import plotly.graph_objects as go
 from shiny import render, reactive, ui
 from shinywidgets import output_widget, render_widget
-percent = pd.read_csv("percentiles.csv")
+appdir = Path(__file__).parent
+percent = pd.read_csv(appdir/"percentiles.csv")
 DF_CURVA = percent.set_index("percentile")
 ```
 
